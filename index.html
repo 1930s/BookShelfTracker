@@ -4,11 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Bookshelf Tracker</title>
 </head>
 <body>
-    
+    <header class="navbar border-bottom">
+        <a href="#" class="navbar-brand border-0">Book Tracker</a>
+        <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navside" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span>Menu</span>
+        </button>
+    </header>
+    <div class="continaer">
+        <div class="row justify-content-center">
+            <nav class="col-6 collapse navbar-collapse" id="navside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link">To Read</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Reading</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Completed</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="col"></div>
+        </div>
+    </div>    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="question.js"></script>
+    <script src="book.js"></script>
+    <script src="storage.js"></script>
+    <script src="display.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
