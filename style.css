@@ -1,0 +1,20 @@
+.new-book{
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+}
+.new-book-mobile {
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    border: none;
+}
+#bookStatus {
+    height: 40px;
+}
+#newBookForm button {
+    width: 80px;
+}

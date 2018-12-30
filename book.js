@@ -5,4 +5,19 @@ class Book{
         this.code = code;
         this.status = status;
     }
+    static addNew() {
+        event.preventDefault();
+        const newBookModal = document.getElementById("addNewBook");
+        const title = document.getElementById("bookTitle").value;
+        const author = document.getElementById("bookAuthor").value;
+        const bookStatus = document.getElementById("bookStatus").value;
+        const book = {
+            title: title,
+            author: author,
+            status: bookStatus 
+        };
+        Storage.saveBook(book);
+        Display.showBooks();
+        
+    }
 }

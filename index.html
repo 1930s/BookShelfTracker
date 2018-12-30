@@ -9,33 +9,66 @@
     <title>Bookshelf Tracker</title>
 </head>
 <body>
-    <header class="navbar border-bottom">
-        <a href="#" class="navbar-brand border-0">Book Tracker</a>
-        <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navside" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span>Menu</span>
-        </button>
+    <header class="navbar border-bottom bg-primary">
+        <a href="#" class="navbar-brand border-0 text-white">Book Tracker</a>
+        <button class="d-none d-md-block bg-success border-0 text-white shadow new-book" data-toggle="modal" data-target="#addNewBook">Add Book</button>
     </header>
-    <div class="continaer">
-        <div class="row justify-content-center">
-            <nav class="col-6 collapse navbar-collapse" id="navside">
-                <ul class="navbar-nav flex-column">
+    <div class="continaer" id="main-container">
+        <div class="row justify-content-center w-100 m-0 px-2">
+            <nav class="col-md-2 px-0 pl-md-5 pt-md-5" id="navside">
+                <ul class="navbar-nav d-flex flex-row flex-md-column justify-content-between justify-content-sm-around justify-content-md-center">
                     <li class="nav-item"><a href="#" class="nav-link">To Read</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Reading</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Completed</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="col"></div>
+            <div class="col" id="booksDisplay"></div>
         </div>
-    </div>    
+    </div>
+    <button type="button" class="d-md-none bg-success my-2 mx-3 text-white rounded-circle shadow new-book-mobile" id="add-book" data-toggle="modal" data-target="#addNewBook">Add Book</button>
+    <div class="modal fade" id="addNewBook" tabindex="-1" role="dialog" aria-labelledby="#addNewBookTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="addNewBookTitle">Add New Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="modal-body" id="newBookForm">
+                    <div class="form-group">
+                        <label for="bookTitle" class="d-block">Title:</label>
+                        <input type="text" id="bookTitle" class="w-100 p-2"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookAuthor" class="d-block">Author:</label>
+                        <input type="text" id="bookAuthor" class="w-100 p-2"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookStatus" class="d-block">Stauts</label>
+                        <select type="text" id="bookStatus" class="w-100 p-2">
+                            <option value="toread">To Read</option>
+                            <option value="reading">Reading</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-auto">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
     <script src="question.js"></script>
-    <script src="book.js"></script>
     <script src="storage.js"></script>
+    <script src="book.js"></script>
     <script src="display.js"></script>
     <script src="app.js"></script>
 </body>
