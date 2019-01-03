@@ -17,14 +17,9 @@ class Display{
             booksContainer.appendChild(newBook);
         });   
     }
-    static faq() {
-        
-    }
     static section() {
         const sectionToGo = this.innerText.toLowerCase();
-        if(sectionToGo == "faq"){
-            Display.faq();
-        }else{
+        if(sectionToGo != "faq"){
             Display.books(sectionToGo);
         }
     }
