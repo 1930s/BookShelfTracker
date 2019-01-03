@@ -39,4 +39,10 @@ class Storage{
         books.push(book);
         
     }
+    static questions() {
+        const questionsList = [];
+    }
+    static getQuestionsByBookCategory(category) {
+        
+    }
 }

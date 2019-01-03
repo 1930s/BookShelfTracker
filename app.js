@@ -1,5 +1,9 @@
+window.onload = Display.books();
 document.getElementById("newBookForm").addEventListener("submit", Book.add);
 document.querySelectorAll(".nav-link").forEach(link => {
     link.addEventListener("click", Display.section);   
 });
-window.onload = Display.books;
+document.querySelectorAll("[data-book]").forEach(book => {
+    book.addEventListener("click", Display.bookInfo);
+});
+document.getElementById("showQuestionsButton").addEventListener("click", Display.questions);

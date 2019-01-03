@@ -10,12 +10,24 @@ class Display{
         books.forEach(book =>{
             const newBook = document.createElement("div");
             newBook.classList.add("card");
-            newBook.innerHTML = "<a href='#' class='text-white'><div class='card-body "+colors[book.status]+"'>"
-                                    +"<h3>"+book.title+"</h3>"
-                                    +"<p>"+book.author+"</p>"
-                                +"</div></a>"
+            newBook.innerHTML = "<a href='#' class='text-white' data-toggle='modal' data-target='#bookInfo'>"
+                                    +"<div data-book='open' class='card-body "+colors[book.status]+"'>"
+                                        +"<h3>"+book.title+"</h3>"
+                                        +"<p>"+book.author+"</p>"
+                                        +"<p>"+book.category+"</p>"
+                                     +"</div>"
+                                +"</a>"
             booksContainer.appendChild(newBook);
         });   
+    }
+    static bookInfo() {
+        const bookTitle = document.getElementById("bookName");
+        const bookInfoBody = document.getElementById("bookInfoBody");
+        bookTitle.innerText = this.querySelector("h3").innerText;
+    }
+    static questions() {
+         
+        console.log(document.getElementById("bookName"));
     }
     static section() {
         const sectionToGo = this.innerText.toLowerCase();
