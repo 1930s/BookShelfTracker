@@ -23,7 +23,7 @@
                     <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
                 </ul>
             </nav>
-            <div class="col" id="booksDisplay"></div>
+            <div class="col mt-3" id="booksDisplay"></div>
         </div>
     </div>
     <button type="button" class="d-md-none bg-success my-2 mx-3 text-white rounded-circle shadow new-book-mobile" id="add-book" data-toggle="modal" data-target="#addNewBook">Add Book</button>
@@ -39,18 +39,26 @@
                 <form class="modal-body" id="newBookForm">
                     <div class="form-group">
                         <label for="bookTitle" class="d-block">Title:</label>
-                        <input type="text" id="bookTitle" class="w-100 p-2"/>
+                        <input type="text" id="bookTitle" class="w-100 p-2" required/>
                     </div>
                     <div class="form-group">
                         <label for="bookAuthor" class="d-block">Author:</label>
-                        <input type="text" id="bookAuthor" class="w-100 p-2"/>
+                        <input type="text" id="bookAuthor" class="w-100 p-2" required/>
                     </div>
                     <div class="form-group">
                         <label for="bookStatus" class="d-block">Stauts</label>
-                        <select type="text" id="bookStatus" class="w-100 p-2">
+                        <select id="bookStatus" class="w-100 p-2">
                             <option value="toread">To Read</option>
                             <option value="reading">Reading</option>
                             <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookCategory" class="d-block">Category</label>
+                        <select id="bookCategory" class="w-100 p-2">
+                            <option value="biography">Biography</option>
+                            <option value="history">History</option>
+                            <option value="novel">Novel</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary mx-auto">Add</button>

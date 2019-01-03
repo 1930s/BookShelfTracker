@@ -5,7 +5,7 @@ class Book{
         this.code = code;
         this.status = status;
     }
-    static addNew() {
+    static add() {
         event.preventDefault();
         const newBookModal = document.getElementById("addNewBook");
         const title = document.getElementById("bookTitle").value;
@@ -16,8 +16,8 @@ class Book{
             author: author,
             status: bookStatus 
         };
-        Storage.saveBook(book);
-        Display.showBooks();
         
+        Storage.saveBook(book);
+        Display.books(); 
     }
 }
