@@ -12,11 +12,13 @@ class Book{
         const author = document.getElementById("bookAuthor").value;
         const bookStatus = document.getElementById("bookStatus").value;
         const category = document.getElementById("bookCategory").value
+        const code = Storage.getNewCode();
         const book = {
             title: title,
             author: author,
             status: bookStatus,
-            category: category
+            category: category,
+            code: code
         };
         Storage.saveBook(book);
         Display.books(); 

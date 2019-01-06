@@ -7,11 +7,12 @@ class Display{
                         "to read": "bg-info",
                         "completed": "bg-success"}
         booksContainer.innerHTML = "";
+        console.log(books);
         books.forEach(book =>{
             const newBook = document.createElement("div");
             newBook.classList.add("card");
             newBook.innerHTML = "<a href='#' class='text-white' data-toggle='modal' data-target='#bookInfo'>"
-                                    +"<div data-book='open' class='card-body "+colors[book.status]+"'>"
+                                    +"<div data-book='open' data-code='"+book.code+"' class='card-body "+colors[book.status]+"'>"
                                         +"<h3>"+book.title+"</h3>"
                                         +"<p>"+book.author+"</p>"
                                         +"<p>"+book.category+"</p>"
@@ -26,7 +27,6 @@ class Display{
         bookTitle.innerText = this.querySelector("h3").innerText;
     }
     static questions() {
-         
         console.log(document.getElementById("bookName"));
     }
     static section() {
