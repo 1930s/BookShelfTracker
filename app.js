@@ -8,5 +8,8 @@ document.querySelectorAll("[data-book]").forEach(book => {
     book.addEventListener("click", Display.bookInfo);
 });
 document.getElementById("showQuestionsButton").addEventListener("click", Display.questions);
+document.querySelectorAll("[data-bookChange]").forEach(link => {
+    link.addEventListener("click", Book.changeState);
+});
 
 

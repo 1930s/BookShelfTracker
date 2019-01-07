@@ -7,11 +7,21 @@ class Display{
                         "to read": "bg-info",
                         "completed": "bg-success"}
         booksContainer.innerHTML = "";
-        console.log(books);
+        
         books.forEach(book =>{
             const newBook = document.createElement("div");
             newBook.classList.add("card");
-            newBook.innerHTML = "<a href='#' class='text-white' data-toggle='modal' data-target='#bookInfo'>"
+            newBook.classList.add("mb-3");
+            newBook.innerHTML = "<div class='dropdown'>"
+                                    +"<button class='dropdown-toggle btn' type='button' data-toggle='dropdown'>Change state</button>"
+                                    +"<div class='dropdown-menu'>"
+                                        +"<a href='#' class='dropdown-item' data-bookChange>To Read</a>"
+                                        +"<a href='#' class='dropdown-item' data-bookChange>Reading</a>"
+                                        +"<a href='#' class='dropdown-item' data-bookChange>Completed</a>"
+                                        +"<a href='#' class='dropdown-item  text-danger' data-bookChange>Delete</a>"
+                                    +"</div>"
+                                +"</div>"
+                                +"<a href='#' class='text-white' data-toggle='modal' data-target='#bookInfo'>"
                                     +"<div data-book='open' data-code='"+book.code+"' class='card-body "+colors[book.status]+"'>"
                                         +"<h3>"+book.title+"</h3>"
                                         +"<p>"+book.author+"</p>"

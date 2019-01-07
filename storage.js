@@ -19,6 +19,15 @@ class Storage{
         books.push(book);
         localStorage.setItem("books", JSON.stringify(books));
     }
+    static deleteBook(code) {
+        const books = JSON.parse(localStorage.getItem("books"));
+        console.log(books);
+        const indexOfBookToDelete = books.findIndex(book => {
+            return book.code == code;
+        });
+        books.splice(indexOfBookToDelete, 1);
+        localStorage.setItem("books", JSON.stringify(books));
+    }
     static questions() {
         const questionsList = [
             {
@@ -75,11 +84,14 @@ class Storage{
         
     }
     static getNewCode() {
-        if (window.localStorage.getItem("books") === null) {
+        if (window.localStorage.getItem("books") === null || window.localStorage.getItem("books") == "[]") {
             return 1;
         }else{
             const bookList = JSON.parse(localStorage.getItem("books"));
             return bookList[bookList.length - 1].code + 1;
         }
+    }
+    static changeBookStatus(code, newStatus) {
+
     }
 }

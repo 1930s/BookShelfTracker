@@ -23,4 +23,16 @@ class Book{
         Storage.saveBook(book);
         Display.books(); 
     }
+    static changeState() {
+        event.preventDefault();
+        const newStatus = this.innerText;
+        const bookCode = this.parentNode.parentNode.nextElementSibling.querySelector("[data-code]").getAttribute("data-code");
+        if(newStatus == "Delete") {
+            Storage.deleteBook(bookCode);
+        } else {
+            Storage.changeBookStatus(bookCode, newStatus);
+        }
+        Display.books(); 
+
+    }
 }
