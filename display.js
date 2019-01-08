@@ -1,7 +1,7 @@
 class Display{
 
     static books(bookStatus) {
-        const books = (typeof bookStatus == "string") ? Storage.loadBooks(bookStatus) : Storage.loadBooks();
+        const books = (typeof bookStatus == "string") ? Storage.getBooks(bookStatus) : Storage.getBooks();
         const booksContainer = document.getElementById("booksDisplay");
         const colors = {"reading": "bg-warning",
                         "to read": "bg-info",
@@ -14,7 +14,7 @@ class Display{
             newBook.classList.add("mb-3");
             newBook.innerHTML = "<div class='dropdown'>"
                                     +"<button class='dropdown-toggle btn' type='button' data-toggle='dropdown'>Change state</button>"
-                                    +"<div class='dropdown-menu'>"
+                                    +"<div class='dropdown-menu' data-code='"+book.code+"'>"
                                         +"<a href='#' class='dropdown-item' data-bookChange>To Read</a>"
                                         +"<a href='#' class='dropdown-item' data-bookChange>Reading</a>"
                                         +"<a href='#' class='dropdown-item' data-bookChange>Completed</a>"
@@ -31,18 +31,23 @@ class Display{
             booksContainer.appendChild(newBook);
         });   
     }
-    static bookInfo() {
+    static bookInfo(book) {
         const bookTitle = document.getElementById("bookName");
         const bookInfoBody = document.getElementById("bookInfoBody");
-        bookTitle.innerText = this.querySelector("h3").innerText;
+        const bookCode = book.getAttribute("data-code");
+        bookInfoBody.setAttribute("data-code", bookCode);
+        bookTitle.innerText = book.querySelector("h3").innerText;
     }
     static questions() {
-        console.log(document.getElementById("bookName"));
+        const bookCode = this.parentNode.getAttribute("data-code");
+        const bookCategory = Storage.getBookCategory(bookCode);
+        const questions = getRandomQuestionsByBookCategory(bookCategory);
+
+        
     }
-    static section() {
-        const sectionToGo = this.innerText.toLowerCase();
-        if(sectionToGo != "faq"){
-            Display.books(sectionToGo);
+    static booksByStatus(status) {
+        if(status != "faq"){
+            Display.books(status);
         }
     }
 }

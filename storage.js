@@ -1,5 +1,5 @@
 class Storage{
-    static loadBooks(bookStatus) {
+    static getBooks(bookStatus) {
         let books;
         if(window.localStorage.getItem("books") == null){
             books = [];
@@ -14,14 +14,18 @@ class Storage{
         }
         return books;
     }
+    static getBookCategory(bookCode) {
+        const books = JSON.parse(localStorage.getItem("books"));
+        return books.find(book => book.code == bookCode).category;
+        
+    }
     static saveBook(book) {
-        const books = this.loadBooks();
+        const books = this.getBooks();
         books.push(book);
         localStorage.setItem("books", JSON.stringify(books));
     }
     static deleteBook(code) {
         const books = JSON.parse(localStorage.getItem("books"));
-        console.log(books);
         const indexOfBookToDelete = books.findIndex(book => {
             return book.code == code;
         });
@@ -80,7 +84,7 @@ class Storage{
             }
         ];
     }
-    static getQuestionsByBookCategory(category) {
+    static getRandomQuestionsByBookCategory(category) {
         
     }
     static getNewCode() {
@@ -92,6 +96,9 @@ class Storage{
         }
     }
     static changeBookStatus(code, newStatus) {
-
+        const books = JSON.parse(localStorage.getItem("books"));
+        const indexOfBookToChange = books.findIndex(book => book.code == code);
+        books[indexOfBookToChange].status = newStatus;
+        localStorage.setItem("books", JSON.stringify(books));
     }
 }

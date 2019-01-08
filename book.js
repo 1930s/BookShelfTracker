@@ -23,11 +23,11 @@ class Book{
         Storage.saveBook(book);
         Display.books(); 
     }
-    static changeState() {
+    static changeState(selectedOption) {
         event.preventDefault();
-        const newStatus = this.innerText;
-        const bookCode = this.parentNode.parentNode.nextElementSibling.querySelector("[data-code]").getAttribute("data-code");
-        if(newStatus == "Delete") {
+        const newStatus = selectedOption.innerText.toLowerCase();
+        const bookCode = selectedOption.parentNode.getAttribute("data-code");
+        if(newStatus == "delete") {
             Storage.deleteBook(bookCode);
         } else {
             Storage.changeBookStatus(bookCode, newStatus);
