@@ -15,13 +15,15 @@ document.addEventListener("click", () => {
         book = (clickedElement.matches("[data-book]")) ? clickedElement : clickedElement.parentNode;
         Display.bookInfo(book);
     }
+
+    if (clickedElement.matches("#showQuestionsButton")) {
+        Display.questions(clickedElement);
+    }
     
 });
 
 window.onload = Display.books();
 
 document.getElementById("newBookForm").addEventListener("submit", Book.add);
-
-document.getElementById("showQuestionsButton").addEventListener("click", Display.questions);
 
 

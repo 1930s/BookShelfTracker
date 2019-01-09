@@ -1,4 +1,5 @@
 class Storage{
+    
     static getBooks(bookStatus) {
         let books;
         if(window.localStorage.getItem("books") == null){
@@ -33,7 +34,7 @@ class Storage{
         localStorage.setItem("books", JSON.stringify(books));
     }
     static questions() {
-        const questionsList = [
+        const questions = [
             {
                 category: "global",
                 questions: ["What is the meaning of what I have read?",
@@ -83,9 +84,30 @@ class Storage{
                             "Can you put what you’ve just read in your own words?"]
             }
         ];
+        return questions;
     }
     static getRandomQuestionsByBookCategory(category) {
-        
+        const questions = this.getQuestionsByCategory(category);
+        let randomQuestions = [];
+        while(randomQuestions.length < 2) {
+            randomQuestions.push(questions[Math.floor(questions.length * Math.random())]);
+        }
+        return randomQuestions;
+    }
+    static getQuestionsByCategory(category) {
+        const questions = this.questions();
+        return questions.find(elements => elements.category == category).questions;
+    }
+    static getRandomGlobalQuestions() {
+        const questions = this.getGlobalQuestions();
+        let randomQuestions = [];
+        while (randomQuestions.length < 2) {
+            randomQuestions.push(questions[Math.floor(questions.length * Math.random())]);
+        }
+        return randomQuestions;
+    }
+    static getGlobalQuestions() {
+        return this.getQuestionsByCategory("global");
     }
     static getNewCode() {
         if (window.localStorage.getItem("books") === null || window.localStorage.getItem("books") == "[]") {

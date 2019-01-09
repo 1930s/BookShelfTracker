@@ -37,12 +37,26 @@ class Display{
         const bookCode = book.getAttribute("data-code");
         bookInfoBody.setAttribute("data-code", bookCode);
         bookTitle.innerText = book.querySelector("h3").innerText;
+        bookInfoBody.innerHTML = "<p>Did you read this book toady?</p>"
+                                 +"<button id='showQuestionsButton'>Yes</button>"
+                                 +"<button data-dismiss='modal'>No</button>"
     }
-    static questions() {
-        const bookCode = this.parentNode.getAttribute("data-code");
+    static questions(button) {
+        const bookCode = button.parentNode.getAttribute("data-code");
         const bookCategory = Storage.getBookCategory(bookCode);
-        const questions = getRandomQuestionsByBookCategory(bookCategory);
-
+        const categoryQuestions = Storage.getRandomQuestionsByBookCategory(bookCategory);
+        const commonQuestions = Storage.getRandomGlobalQuestions();
+        const questionsContainer = button.parentNode;
+        let questionsOnHtml = "";
+        console.log(categoryQuestions, commonQuestions);
+        while (categoryQuestions.length != 0 && commonQuestions.length != 0) {
+            questionsOnHtml += "<p>" + categoryQuestions.shift() +"</p>";
+            questionsOnHtml += "<p>" + commonQuestions.shift() +"</p>";
+        }
+        questionsContainer.innerHTML = "<h3>Then, question time!</h3>" 
+                                        + questionsOnHtml
+                                        +"<button data-dismiss='modal'>Done</button>";
+        
         
     }
     static booksByStatus(status) {
