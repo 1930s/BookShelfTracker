@@ -5,7 +5,7 @@ class Book{
         this.code = code;
         this.status = status;
     }
-    static add() {
+    static add(event) {
         event.preventDefault();
         const newBookModal = document.getElementById("addNewBook");
         const title = document.getElementById("bookTitle").value;
@@ -23,12 +23,17 @@ class Book{
         Storage.saveBook(book);
         Display.books(); 
     }
-    static changeState(selectedOption) {
+    static editBookModal(bookCode) {
+        
+    }
+    static changeState(event, selectedOption) {
         event.preventDefault();
         const newStatus = selectedOption.innerText.toLowerCase();
         const bookCode = selectedOption.parentNode.getAttribute("data-code");
         if(newStatus == "delete") {
             Storage.deleteBook(bookCode);
+        } else if(newStatus == "edit") {
+            Display.editBookModal(bookCode);
         } else {
             Storage.changeBookStatus(bookCode, newStatus);
         }

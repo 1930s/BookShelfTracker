@@ -1,5 +1,6 @@
 //localStorage.clear();
-document.addEventListener("click", () => {
+document.addEventListener("click", (event) => {
+    console.log(event.target);
     const clickedElement = event.target;
     let book;
 
@@ -8,7 +9,7 @@ document.addEventListener("click", () => {
     }
 
     if (clickedElement.matches("[data-bookChange]")){
-        Book.changeState(clickedElement);
+        Book.changeState(event,clickedElement);
     }
 
     if (clickedElement.matches("[data-book]") || clickedElement.parentNode.matches("[data-book]")){
@@ -22,7 +23,7 @@ document.addEventListener("click", () => {
     
 });
 
-window.onload = Display.books();
+Display.books();
 
 document.getElementById("newBookForm").addEventListener("submit", Book.add);
 
