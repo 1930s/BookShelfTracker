@@ -54,7 +54,6 @@ class Display{
         const commonQuestions = Storage.getRandomGlobalQuestions();
         const questionsContainer = button.parentNode;
         let questionsOnHtml = "";
-        console.log(categoryQuestions, commonQuestions);
         while (categoryQuestions.length != 0 && commonQuestions.length != 0) {
             questionsOnHtml += "<p>" + categoryQuestions.shift() +"</p>";
             questionsOnHtml += "<p>" + commonQuestions.shift() +"</p>";
@@ -69,5 +68,24 @@ class Display{
         if(status != "faq"){
             Display.books(status);
         }
+    }
+    static editBookModal(bookCode) {
+        const book = Storage.getBookByCode(bookCode);
+        document.getElementById("addNewBookTitle").innerText = book.title;
+        document.getElementById("bookTitle").value = book.title;
+        document.getElementById("bookAuthor").value = book.author;
+        document.getElementById("bookStatus").value = book.status;
+        document.getElementById("bookCategory").value = book.category;
+        document.getElementById("newBookForm").querySelector("button").innerText = "Edit";
+        document.getElementById("newBookForm").setAttribute("bookCode",bookCode);
+    }
+    static cleanBookModal() {
+        document.getElementById("addNewBookTitle").innerText = "Add New Book";
+        document.getElementById("bookTitle").value = "";
+        document.getElementById("bookAuthor").value = "";
+        document.getElementById("bookStatus").value = "";
+        document.getElementById("bookCategory").value = "";
+        document.getElementById("newBookForm").querySelector("button").innerText = "Add";
+        document.getElementById("newBookForm").removeAttribute("bookCode");
     }
 }

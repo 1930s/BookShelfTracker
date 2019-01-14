@@ -20,6 +20,10 @@ class Storage{
         return books.find(book => book.code == bookCode).category;
         
     }
+    static getBookByCode(bookCode) {
+        const books = JSON.parse(localStorage.getItem("books"));
+        return books.find(book => {return book.code == bookCode});
+    }
     static saveBook(book) {
         const books = this.getBooks();
         books.push(book);

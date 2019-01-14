@@ -5,8 +5,17 @@ class Book{
         this.code = code;
         this.status = status;
     }
-    static add(event) {
+    static whatToDo(event) {
         event.preventDefault();
+        const button = event.target.querySelector("button");
+        if(button.innerText == "Add") {
+            Book.add();
+        } else {
+            Book.edit();
+        } 
+        Display.books();
+    }
+    static add() {
         const newBookModal = document.getElementById("addNewBook");
         const title = document.getElementById("bookTitle").value;
         const author = document.getElementById("bookAuthor").value;
@@ -20,11 +29,23 @@ class Book{
             category: category,
             code: code
         };
-        Storage.saveBook(book);
-        Display.books(); 
+        Storage.saveBook(book); 
     }
-    static editBookModal(bookCode) {
-        
+    static edit() {
+        const bookCode = document.getElementById("newBookForm").getAttribute("bookCode");
+        const title = document.getElementById("bookTitle").value;
+        const author = document.getElementById("bookAuthor").value;
+        const bookStatus = document.getElementById("bookStatus").value;
+        const category = document.getElementById("bookCategory").value
+        const newBook = {
+            title: title,
+            author: author,
+            status: bookStatus,
+            category: category,
+            code: bookCode
+        };
+        Storage.deleteBook(bookCode);
+        Storage.saveBook(newBook);
     }
     static changeState(event, selectedOption) {
         event.preventDefault();
