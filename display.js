@@ -41,10 +41,13 @@ class Display{
         const bookTitle = document.getElementById("bookName");
         const bookInfoBody = document.getElementById("bookInfoBody");
         const bookCode = book.getAttribute("data-code");
-        bookInfoBody.setAttribute("data-code", bookCode);
         bookTitle.innerText = book.querySelector("h3").innerText;
+        bookTitle.classList.add("m-auto");
+        bookInfoBody.setAttribute("data-code", bookCode);
+        bookInfoBody.classList.add("text-center");
+        bookInfoBody.classList.add("pb-5");
         bookInfoBody.innerHTML = "<p>Did you read this book toady?</p>"
-                                 +"<button class='btn btn-primary' id='showQuestionsButton'>Yes</button>"
+                                 +"<button class='btn btn-primary mr-3' id='showQuestionsButton'>Yes</button>"
                                  +"<button class='btn btn-primary' data-dismiss='modal'>No</button>"
     }
     static questions(button) {
@@ -87,5 +90,9 @@ class Display{
         document.getElementById("bookCategory").value = "";
         document.getElementById("newBookForm").querySelector("button").innerText = "Add";
         document.getElementById("newBookForm").removeAttribute("bookCode");
+    }
+    static hideModal() {
+        const modal = document.getElementById("addNewBook");
+    
     }
 }

@@ -12,7 +12,8 @@ class Book{
             Book.add();
         } else {
             Book.edit();
-        } 
+        }
+        Display.hideModal(); 
         Display.books();
     }
     static add() {
