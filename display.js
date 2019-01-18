@@ -1,9 +1,6 @@
 class Display{
 
     static books(bookStatus) {
-        /* TODO: Reduce the length of the function. It does to much. Check if it can be
-           modified to not need bookStatus argument. 
-        */
         const books = (typeof bookStatus == "string") ? Storage.getBooks(bookStatus) : Storage.getBooks();
         const booksContainer = document.getElementById("booksDisplay");
         const colors = {"reading": "bg-warning",
@@ -61,7 +58,7 @@ class Display{
             questionsOnHtml += "<p>" + categoryQuestions.shift() +"</p>";
             questionsOnHtml += "<p>" + commonQuestions.shift() +"</p>";
         }
-        questionsContainer.innerHTML = "<h3>Then, question time!</h3>" 
+        questionsContainer.innerHTML = "<h3>Then, question time!</h3><hr/>" 
                                         + questionsOnHtml
                                         +"<button class='btn btn-primary' data-dismiss='modal'>Done</button>";
         
